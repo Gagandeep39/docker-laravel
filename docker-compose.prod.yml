@@ -1,16 +1,20 @@
 version: "3.8"
 services:
   server:
-  build: 
-    context: .
-    dockerfile: docker/Dockerfile.nginx
+    build: 
+      context: .
+      dockerfile: docker/Dockerfile.nginx
     depends_on: 
       - php
       - mysql
+    ports:
+      - '8000:80'
   php:
     build: 
       context: .
-      dockerfile: docker/Dockerfile.php
+      dockerfile: docker/Dockerfile.php.prod
+    volumes: 
+      - /var/www/html
   mysql:
     image: mysql:5.7
     env_file: ./env/mysql.env
