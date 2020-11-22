@@ -6,9 +6,12 @@ services:
       - '8000:80'
     volumes:
         # Custom config to nginx path
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
         # All the php code must be accessible to nginx server
       - ./src:/var/www/html
+    depends_on: 
+      - php
+      - mysql
   php:
     build: 
       context: ./docker
