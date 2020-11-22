@@ -1,0 +1,11 @@
+FROM php:7.4-fpm-alpine
+WORKDIR /var/www/html
+# Used during prodction to copy code snapshot
+COPY src .
+RUN docker-php-ext-install pdo pdo_mysql
+# Change ownership to user -www-data and group www-data
+# Default user 'www-data' is avilable in apache server
+# Using laravel will not work as it doest exist
+# Issue ocues because the folder desnt exist initially
+# When its creadted it doesnt have permission for write
+RUN chown -R www-data:www-data /var/www/html
