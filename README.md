@@ -38,3 +38,6 @@
 7. Tried accessing `localhost:8000` in browser (Everything works)
 8. Added artisan and npm service in docker-compose
 9. Add dummy data in tables `docker-compose run --rm artisan migrate`
+10. Created a nginx, php docker file for production
+11. Created dodcker-compose for production
+12. `docker-compose -f docker-compose.prod.yml up --build server`
