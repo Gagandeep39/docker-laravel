@@ -27,3 +27,5 @@
 3. Created nginx conf file
 4. Created docker-compose file
 5. Execute `docker-compose run --rm composer create-project --prefer-dist laravel/laravel .` to create laravel project
+6. Start specific services `docker-compose up --build mysql server php`
+7. Tried accessing `localhost:8000` in browser (Everything works)
