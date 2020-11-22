@@ -1,5 +1,7 @@
 FROM php:7.4-fpm-alpine
 WORKDIR /var/www/html
+# Used during prodction to copy code snapshot
+COPY src .
 RUN docker-php-ext-install pdo pdo_mysql
 
 # ----------------------------
