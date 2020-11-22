@@ -1,0 +1,37 @@
+version: "3.8"
+services:
+  server:
+  build: 
+    context: .
+    dockerfile: docker/Dockerfile.nginx
+    depends_on: 
+      - php
+      - mysql
+  php:
+    build: 
+      context: .
+      dockerfile: docker/Dockerfile.php
+  mysql:
+    image: mysql:5.7
+    env_file: ./env/mysql.env
+  composer:
+    build: 
+      context: ./docker
+      dockerfile: Dockerfile.composer
+    volumes: 
+      - ./src:/var/www/html
+  artisan:
+    build: 
+      context: ./docker
+      dockerfile: Dockerfile.php
+    volumes: 
+      - ./src:/var/www/html
+    # Overriding dockerfle by adding an entryfile
+    # We can create a separate dockerfile for artisan instead of this
+    entrypoint: ["php", "/var/www/html/artisan"]
+  npm:
+    image: node:14-alpine
+    # Below 2 commands are substitue to creating our own utility docker image
+    working_dir: /var/www/html
+    entrypoint: ["npm"]
+
