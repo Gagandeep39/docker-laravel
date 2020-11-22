@@ -4,6 +4,7 @@
   - [MYSQL](#mysql)
   - [Server](#server)
   - [Composer](#composer)
+  - [artisan](#artisan)
   - [Steps Executed](#steps-executed)
 
 ## MYSQL
@@ -20,6 +21,12 @@
 - Similar to npm used by nodejs
 - Saves us from natively installing composer package
 
+## artisan
+
+- Used by laravel
+- Populates database with some dummy data iitially
+- Works with same dockerfile as php
+
 ## Steps Executed
 
 1. Created Utility docker files
@@ -29,3 +36,5 @@
 5. Execute `docker-compose run --rm composer create-project --prefer-dist laravel/laravel .` to create laravel project
 6. Start specific services `docker-compose up --build mysql server php`
 7. Tried accessing `localhost:8000` in browser (Everything works)
+8. Added artisan and npm service in docker-compose
+9. Add dummy data in tables `docker-compose run --rm artisan migrate`
