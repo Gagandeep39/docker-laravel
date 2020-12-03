@@ -40,6 +40,7 @@ services:
   npm:
     image: node:14-alpine
     # Below 2 commands are substitue to creating our own utility docker image
+    # Utility command `docker-compose run --rm -v ${pwd}:/var/www/html npm init`
     working_dir: /var/www/html
     entrypoint: ["npm"]
 
